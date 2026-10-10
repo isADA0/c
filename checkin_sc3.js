@@ -29,8 +29,8 @@ function parseState(html) {
     return m ? parseInt(m[1], 10) : null;
   };
   const total = num(/总签到：(\d+)/);
-  const cont = num(/最多连续签到：(\d+)/);
-  const contnow = num(/连续签到：(\d+)/);  
+  const cont = num(/连续签到：(\d+)/);
+  const contnow = num(/(?<!最多)连续签到：(\d+)/); //避免匹配最多连续签到
   let latest = null;
   const li = t.indexOf("最新签到：");
   if (li >= 0) latest = t.slice(li + 5, li + 5 + 24).split(/连续|补签|盐度|总签到|答题|注册|时间/)[0].trim();
