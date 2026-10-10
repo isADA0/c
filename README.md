@@ -1,6 +1,6 @@
-# fwcheckin
+# checkin
 
-Daily auto check-in for [废文网 / SosadFun](https://xn--pxtr7m.net).
+Daily auto check-in for
 
 Zero dependencies (Node 18+ native `fetch`). Runs on QingLong, plain Node, or GitHub Actions.
 
