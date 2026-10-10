@@ -99,7 +99,7 @@ async function pushNotify(title, content) {
 }
 
 (async () => {
-  const raw = process.env.FWXS || "";
+  const raw = process.env.fwxs || "";
   if (!raw.trim()) {
     console.log("❌ 未配置环境变量 fwxs");
     process.exit(1);
