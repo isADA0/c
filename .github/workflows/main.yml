@@ -1,4 +1,4 @@
-name: Daily check-in
+name: sc3 check-in
 
 on:
   schedule:
@@ -24,10 +24,8 @@ jobs:
         uses: actions/setup-node@v7
         with:
           node-version: 22
-      
-      - name: Check env
+
+      - name: Run check-in
         env:
-          FWXS: ${{ secrets.FWXS }}
-        run: |
-          echo "FWXS set: ${{ secrets.FWXS != '' }}"
-          node -e "console.log('FWXS in node:', !!process.env.FWXS)"
+          fwxs: ${{ secrets.FWXS }}
+        run: node checkin_sc3.js
