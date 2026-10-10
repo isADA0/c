@@ -128,5 +128,5 @@ async function pushSC3(title, content) {
     results.push(await runOne(cookie, label));
   }
   // ===== 修改：调用 pushSC3 替代原来的 pushNotify =====
-  await pushSC3("废文网签到", results.join("\n"));
+  await pushSC3("废文网签到", results.join("\n\n"));
 })();
