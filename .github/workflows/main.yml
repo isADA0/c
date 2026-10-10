@@ -1,0 +1,6 @@
+      - name: Check env
+        env:
+          FWXS: ${{ secrets.FWXS }}
+        run: |
+          echo "FWXS set: ${{ secrets.FWXS != '' }}"
+          node -e "console.log('FWXS in node:', !!process.env.FWXS)"
