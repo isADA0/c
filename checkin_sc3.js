@@ -29,11 +29,12 @@ function parseState(html) {
     return m ? parseInt(m[1], 10) : null;
   };
   const total = num(/总签到：(\d+)/);
-  const cont = num(/连续签到：(\d+)/);
+  const cont = num(/最多连续签到：(\d+)/);
+  const contnow = num(/连续签到：(\d+)/);  
   let latest = null;
   const li = t.indexOf("最新签到：");
   if (li >= 0) latest = t.slice(li + 5, li + 5 + 24).split(/连续|补签|盐度|总签到|答题|注册|时间/)[0].trim();
-  return { total, cont, latest };
+  return { total, cont,contnow ,latest };
 }
 
 async function runOne(cookie, label) {
@@ -55,14 +56,14 @@ async function runOne(cookie, label) {
 
     let result;
     if (before.total != null && after.total != null && after.total > before.total) {
-      result = `${tag} ✅ 签到成功  连续${after.cont}天 / 总${after.total}天`;
+      result = `${tag} ✅ 签到成功  当前${after.contnow}天 / 连续${after.cont}天 / 总${after.total}天`;
     } else if (
       after.latest && /秒|分|刚|just|second|minute|hour/i.test(after.latest) &&
       before.total === after.total && after.total != null
     ) {
-      result = `${tag} ☑️ 今日已签到  连续${after.cont}天 / 总${after.total}天（最新：${after.latest}）`;
+      result = `${tag} ☑️ 今日已签到 当前${after.contnow}天 / 连续${after.cont}天 / 总${after.total}天（最新：${after.latest}）`;
     } else {
-      result = `${tag} ⚠️ 状态未变（HTTP ${q.status}）连续${after.cont}天 / 总${after.total}天（最新：${after.latest}）`;
+      result = `${tag} ⚠️ 状态未变（HTTP ${q.status}）当前${after.contnow}天 / 连续${after.cont}天 / 总${after.total}天（最新：${after.latest}）`;
     }
     console.log(result);
     return result;
