@@ -27,5 +27,5 @@ jobs:
 
       - name: Run check-in
         env:
-          fwxs: ${{ secrets.FWXS }}
+          fwxs: ${{ secrets.fwxs }}
         run: node fwxs_checkin.js
