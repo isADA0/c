@@ -28,4 +28,5 @@ jobs:
       - name: Run check-in
         env:
           fwxs: ${{ secrets.FWXS }}
+          SC3_SENDKEY: ${{ secrets.SC3_SENDKEY }}
         run: node checkin_sc3.js
